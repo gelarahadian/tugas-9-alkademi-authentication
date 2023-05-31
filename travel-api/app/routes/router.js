@@ -26,17 +26,17 @@ module.exports = function (app) {
   app.get("/api/booking/:id", bookingController.getById);
   app.post(
     "/api/booking",
-    [verifyJwtTokenController.verifyToken],
+    [verifyJwtTokenController.verifyToken, verifyJwtTokenController.isAdmin],
     bookingController.add
   );
   app.put(
     "/api/booking/:id",
-    [verifyJwtTokenController.verifyToken],
+    [verifyJwtTokenController.verifyToken, verifyJwtTokenController.isAdmin],
     bookingController.update
   );
   app.delete(
     "/api/booking/:id",
-    [verifyJwtTokenController.verifyToken],
+    [verifyJwtTokenController.verifyToken, verifyJwtTokenController.isAdmin],
     bookingController.delete
   );
 };
